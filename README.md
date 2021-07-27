@@ -1,2 +1,3 @@
 # LC_VUE2.x
-vue2.x详解...
+## VUE官网
+https://cn.vuejs.org/
