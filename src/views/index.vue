@@ -35,7 +35,7 @@ export default {
     };
   },
   mounted() {
-    this.routerList = this.$router.getRoutes().filter(v=>v.meta.isShow);
+    this.routerList = this.$router.options.routes[1].children;
     console.log(this.routerList)
     console.log('--------------')
     console.log(this.$route)

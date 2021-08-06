@@ -70,7 +70,6 @@ export default {
                     let data = response.data
                     if(data.code===200){
                         localStorage.setItem('token',data.data.token)
-                        localStorage.setItem('router',JSON.stringify(data.data.authority))
                         // console.log(localStorage.getItem('token'))
                         _this.$router.push('/')
 

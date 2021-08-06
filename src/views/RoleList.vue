@@ -87,18 +87,15 @@ export default {
         },
         upData(index){
             console.log(index);
-           this.$router.push({
-                name: 'Tauthority',
-                // params:{
-                //     roleId:1,
-                //     tIds:[2,3,4]
-                // }
-                query:{
-                    id:this.list[index].roleId,
-                    authority:JSON.stringify(this.list[index].authority)
-                }
-                // path: 'tauthority',
-           })
+            // this.addData = {...this.list[index]}
+            // this.addData.role=this.addData.role.map(v=>{
+            //        return {
+            //            roleId: v.role,
+            //            roleName:v.roleName
+            //        }
+            //    })
+            //    this.index=index
+            // this.isAdd = true
         }
     }
 };

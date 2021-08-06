@@ -5,17 +5,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    //响应式的数据
-    ids:[],
-    name:'',
+    ids:['Tina'],
+    name:'Tina',
+    id:""
   },
   mutations: {
     // setName(state,str){
     //   state.name = str
     // }
-    setIds(state,arr){
-      state.ids = arr
-    },
   },
   actions: {
     // SETNAME(context){
@@ -23,16 +20,7 @@ export default new Vuex.Store({
     //     context.commit('setName',res)
     //   })
     // }
-
-    DELIDS(context){
-      context.commit('setIds',[])
-    },
-    SETIDS(context,ids){
-      context.commit('setIds',ids)
-    }
-
   },
-  // modules: {
-    
-  // }
+  modules: {
+  }
 })

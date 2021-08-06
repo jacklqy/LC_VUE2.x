@@ -15,7 +15,7 @@
           src="../assets/img/2.png"
           alt=""
         />
-        <input v-model="$store.state.ids" :value="i.roleId" type="checkbox" />
+        <input v-model="ids" :value="i.roleId" type="checkbox" />
         {{ i.name }}
       </div>
       <Tree v-if="i.roleList && !isExt[index]" :list="i.roleList" />
@@ -37,7 +37,6 @@
 </template>
 
 <script>
-// import {mapState} from 'vuex'
 export default {
   name: "Tree",
   data() {
@@ -45,24 +44,11 @@ export default {
       //当树形结构是展开的时候，数组里对应的那一项的值为false
       //展开的状态  为false的时候就是展开，为true的时候就是收起
       isExt: [],
-      // ids: [],
+      ids: [],
     };
   },
   props: {
     list: Array,
-  },
-  // computed:{
-  //   iDs:function(){
-  //     console.log('vue实例',this);
-  //     return this.$store.state.ids
-  //   }
-  //   // ids:this.$store.state.ids
-  //   //  ...mapState(['ids'])
-  // },
-  watch:{
-    ids:(v)=>{
-      console.log(v);
-    }
   },
   beforeMount() {
     // this.isExt.length = this.list.length
@@ -70,7 +56,6 @@ export default {
   },
   methods: {
     isExtChange(index) {
-      console.log(this.iDs);
         // console.log(this.$store.state);
       // this.isExt[index] = !this.isExt[index]
       // [,,false]

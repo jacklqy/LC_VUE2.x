@@ -16,7 +16,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "login" */ '../views/login.vue'),
     meta:{
       title:'登录'
-    },
+    }
   },
   // {
   //   path: '/login',
@@ -32,7 +32,7 @@ const routes = [
   {
     path: '/',
     name: 'Index',
-    // alias: '/xiaoming',
+    alias: '/xiaoming',
     redirect:'home',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -55,7 +55,61 @@ const routes = [
           next()
         }
       },
-      
+      {
+        path: 'order',
+        name: 'Order',
+        meta:{
+          title:'订单列表'
+        },
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "order" */ '../views/order.vue')
+      },
+      {
+        path: 'userList',
+        name: 'UserList',
+        meta:{
+          title:'用户列表'
+        },
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "userList" */ '../views/UserList.vue')
+      },
+      {
+        path: 'roleList',
+        name: 'RoleList',
+        meta:{
+          title:'角色列表'
+        },
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "roleList" */ '../views/RoleList.vue')
+      },
+      {
+        path: 'tauthority',
+        name: 'Tauthority',
+        meta:{
+          title:'权限列表'
+        },
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "tauthority" */ '../views/Tauthority.vue')
+      },
+      {
+        path: 'about',
+        name: 'About',
+        meta:{
+          title:'关于朝夕'
+        },
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+      },
      
     ]
   },
@@ -79,44 +133,14 @@ const router = new VueRouter({
  * next 管道
  */
 router.beforeEach((to, from, next) => {
+  console.log(to,from)
   let token = localStorage.getItem('token')
-  let routerList = JSON.parse(localStorage.getItem('router'))
-  console.log(routerList);
   if(to.name==='Login'&&token){
     next('/')
   }else if(to.name!=='Login'&&!token){
     next('/login')
   }
-  // console.log(router.getRoutes());
-  // 有没有添加过动态路由
-  if(router.getRoutes().length>4){
-    next()
-  }else{
-    // 循环获取到权限的路由
-  routerList.map(v=>{
-    // console.log( `../views/${v.name}.vue`);
-    // 动态添加
-
-    // 添加成为一级路由
-    // router.addRoute({
-    //   ...v,
-    //   component: () => import( /* webpackChunkName: "addRoute" */  `../views/${v.name}.vue`) 
-    // })
-    router.addRoute('Index',{
-        ...v,
-        component: () => import( /* webpackChunkName: "addRoute" */  `../views/${v.name}.vue`) 
-      })
-  })
-  // console.log('路由注入了~~~');
-  // console.log();
-  console.log(router.getRoutes());
-  router.replace(to.path)
-  // next()
-  // router.resolve()
-}
-  // if(to.name!=='Login'&&router.)
-  // router.addRoute()
-  
+  next()
 })
 
 export default router
